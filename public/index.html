@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <form action="" id="chat">
+
+        <input type="text" name="username"  placeholder="Digite seu usuário" id="userInput" onfocusout="lockedInputUser()">
+        <div class="messages">
+        </div>
+
+
+        <div class="inputs">
+            <input type="text" name="message" placeholder="Digite sua mensagem">
+            <button type="submit">Enviar</button>
+        </div>
+
+
+    </form>
+    
+    <script type="text/javascript">
+        let socket = io('http://localhost:3000');
+
+        function hora(){
+            let today = new Date();
+            let time = today.getHours() + ":" + today.getMinutes();
+            return time;
+        }
+
+        function renderMessage(message){
+            
+            $('.messages').append(
+                `
+                <div class="message"> 
+                    <div class="messageField">
+                        <strong>${message.author}:</strong>
+                        ${message.message}
+                    </div>
+
+                    <div> 
+                        ${hora()}
+                    </div>
+                </div>
+                `
+            )
+        }
+
+        socket.on('receivedMessage', function(message) {
+            renderMessage(message);
+        })
+
+        socket.on('previousMessage', function(messages){
+            for(message of messages){
+                renderMessage(message)
+            }
+        })
+
+        $('#chat').submit(function(e){
+            e.preventDefault();
+
+            var author = $('input[name=username]').val();
+            var message = $('input[name=message]').val();
+
+            if(author.length && message.length){
+                var messageObject = {
+                    author: author,
+                    message: message,
+               };
+
+               renderMessage(messageObject);
+
+               socket.emit('sendMessage', messageObject);
+               
+            }
+        });
+
+        let userInput = document.getElementById('userInput');
+
+        function lockedInputUser(){
+            userInput.setAttribute('disabled','disabled');
+        }
+
+    </script>
+</body>
+</html>

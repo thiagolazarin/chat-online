@@ -1,0 +1,95 @@
+html, body {
+    height: 100%;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  #chat {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2vw;
+  }
+
+  input {
+    width: 60vw;
+    border: 1px solid #ddd;
+    padding: 20px;
+    height: 4vw;
+    padding: 0 2vw;
+    font-size: 1.5vw;
+  }
+    
+  .messages {
+    width: 60vw;
+    height: 40vw;
+    margin: 2vw 0;
+    border: 1px solid #ddd;
+    padding: 2vw;
+    background-color: #ece8e2;
+    border-radius: 15px;
+  }
+  
+  .message{
+    display: flex;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+
+  .inputs{
+    display: flex;
+    max-width: 60vw;
+    width: 100%;
+    align-items: center;
+  }
+
+  .inputs input{
+    width: 80%;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .inputs button{
+    width: 20%;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-left: 5px;
+
+
+    font-size: 1.5vw;
+    background-color: #25d366;
+    height: 8vh;
+    font-weight: bold;
+    color: #FFF;
+    border: none;
+  }
+
+
+  @media screen and (max-width: 990px) {
+    button,
+    .inputs
+    .messages {
+      width: 90%;
+    }
+  
+    input,
+    button {
+      height: 2rem;
+      font-size: 1rem;
+    }
+  
+    .messages {
+      height: 60%;
+    }
+  }
