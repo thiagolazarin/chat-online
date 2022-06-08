@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html, body {
     height: 100%;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,126,149,1) 0%, rgba(10,189,227,1) 100%);
   }
   
   * {
@@ -7,9 +11,32 @@ html, body {
     padding: 0;
     box-sizing: border-box;
   }
+
+  .header{
+    width: 100%;
+    background-color: black;
+    font-family: 'Lobster', cursive;
+  }
+
+  .header-container{
+    max-width: 1200px;
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    color: whitesmoke;
+  }
+
+  #userInput{
+    border-radius: 20px;
+  }
   
   #chat {
-    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +45,7 @@ html, body {
   }
 
   input {
-    width: 60vw;
+    width: 40vw;
     border: 1px solid #ddd;
     padding: 20px;
     height: 4vw;
@@ -27,7 +54,7 @@ html, body {
   }
     
   .messages {
-    width: 60vw;
+    width: 50vw;
     height: 40vw;
     margin: 2vw 0;
     border: 1px solid #ddd;
@@ -47,7 +74,7 @@ html, body {
 
   .inputs{
     display: flex;
-    max-width: 60vw;
+    max-width: 50vw;
     width: 100%;
     align-items: center;
   }
@@ -81,6 +108,14 @@ html, body {
     .inputs
     .messages {
       width: 90%;
+    }
+
+    form{
+      margin-top: -50px;
+    }
+
+    #chat{
+      height: 100%;
     }
   
     input,

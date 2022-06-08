@@ -13,18 +13,24 @@
 </head>
 <body>
 
+    <div class="header">
+        
+        <div class="header-container">
+            <h2>Conecte-se</h2>
+            <input type="text" name="username"  placeholder="Digite seu nome" id="userInput" onfocusout="lockedInputUser()">
+        </div>
+
+    </div>
+
     <form action="" id="chat">
 
-        <input type="text" name="username"  placeholder="Digite seu usuário" id="userInput" onfocusout="lockedInputUser()">
         <div class="messages">
         </div>
 
-
         <div class="inputs">
-            <input type="text" name="message" placeholder="Digite sua mensagem">
+            <input type="text" name="message" id="message" placeholder="Digite sua mensagem">
             <button type="submit">Enviar</button>
         </div>
-
 
     </form>
     
@@ -68,14 +74,17 @@
         $('#chat').submit(function(e){
             e.preventDefault();
 
-            var author = $('input[name=username]').val();
-            var message = $('input[name=message]').val();
+            let author = $('input[name=username]').val();
+            let message = $('input[name=message]').val();
 
             if(author.length && message.length){
-                var messageObject = {
+                let messageObject = {
                     author: author,
                     message: message,
                };
+
+               console.log(messageObject);
+               console.log(author);
 
                renderMessage(messageObject);
 
